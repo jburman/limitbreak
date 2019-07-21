@@ -1,0 +1,29 @@
+type file
+id limitbreak
+title
+    limitbreak
+owners
+    Jeremy Burman
+authors 
+    Jeremy Burman
+projectUrl
+    https://github.com/jburman/limitbreak/jburman/limitbreak
+iconUrl
+    https://raw.githubusercontent.com/jburman/limitbreak/jburman/limitbreak/master/docs/files/img/logo.png
+licenseUrl
+    https://github.com/jburman/limitbreak/jburman/limitbreak/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+language
+    F#
+copyright
+    Copyright 2017
+tags
+    event rate ratelimit
+summary
+    Functions for tracking event frequency and applying rate limits.
+description
+    Functions for tracking event frequency and applying rate limits.
+
+files
+	../../bin/limitbreak ==> lib
