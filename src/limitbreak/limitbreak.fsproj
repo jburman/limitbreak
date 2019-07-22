@@ -14,8 +14,10 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Library.fs" />
-    <None Include="Scripts\Script.fsx" />
+    <EmbeddedResource Remove="Scripts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LimitBreak.fs" />
     <None Include="paket.references" />
     <None Include="paket.template" />
   </ItemGroup>

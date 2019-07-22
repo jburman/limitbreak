@@ -7,13 +7,18 @@
 Introducing your project
 ========================
 
-Say more
+TODO
 
 *)
 #r "limitbreak.dll"
 open limitbreak
 
-Library.hello 0
+let eventId = 100
+let eventMonitor = new EventMonitor(eventId, [limitbreak.createDecayRate 1.0; limitbreak.createValueCap 1360; limitbreak.createThreshold 1000])
+
+let (status, count) = eventMonitor.GetStatus
+
+printfn "Status %A - Counter %i" status count
 (**
-Some more info
+
 *)

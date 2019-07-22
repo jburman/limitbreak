@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Namespaces - limitbreak</title>
+    <title>limitbreak - limitbreak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content="Jeremy Burman"/>
@@ -33,65 +33,81 @@
         <div class="span9" id="main">
           
 
+
+
 <h1>limitbreak</h1>
+<p>
+  <span>Namespace: limitbreak</span><br />
+  </p>
+<div class="xmldoc">
+</div>
 
+<!-- Render nested types and modules, if there are any -->
 
-  <h2>limitbreak Namespace</h2>
-    <div>
-      <table class="table table-bordered type-list">
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
     <thead>
-      <tr><td>Type</td><td>Description</td></tr>
+      <tr><td>Function or value</td><td>Description</td></tr>
     </thead>
     <tbody>
-        <tr>
-          <td class="type-name">
-            <a href="limitbreak-eventcounter.html">EventCounter</a>
-          </td>
-          <td class="xmldoc">
-          <p>Encapsulates a thread safe counter associated with an eventId.</p>
+      <tr>
+        <td class="member-name">
 
-
-          </td>
-        </tr>
-        <tr>
-          <td class="type-name">
-            <a href="limitbreak-eventmonitor.html">EventMonitor</a>
-          </td>
-          <td class="xmldoc">
-          <p>Encapsulates an EventCounter and a set of "event processor" functions that operate on the counter
-in order. Each process has the opportunity to read the counter and modify it and dtermine if the
-event should be "limited" or not.</p>
-
-
-          </td>
-        </tr>
-        <tr>
-          <td class="type-name">
-            <a href="limitbreak-monitorstatus.html">MonitorStatus</a>
-          </td>
-          <td class="xmldoc">
+          <code onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)">
+            createDecayRate(decayPerSecond)
+          </code>
+          <div class="tip" id="1">
+            <strong>Signature:</strong> decayPerSecond:float -&gt; EventCounter -&gt; MonitorStatus -&gt; MonitorStatus<br />
+                                  </div>
+        </td>
+        <td class="xmldoc">
+                      <a href="https://github.com/jburman/limitbreak/tree/master/src/limitbreak/LimitBreak.fs#L71-71" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
           
-          </td>
-        </tr>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)">
+            createThreshold(...)
+          </code>
+          <div class="tip" id="2">
+            <strong>Signature:</strong> limit:int -&gt; eventCounter:EventCounter -&gt; monitorStatus:MonitorStatus -&gt; MonitorStatus<br />
+                                  </div>
+        </td>
+        <td class="xmldoc">
+                      <a href="https://github.com/jburman/limitbreak/tree/master/src/limitbreak/LimitBreak.fs#L62-62" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns a MonitorStatus of limited when counter equals or exceeds a given value.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)">
+            createValueCap(...)
+          </code>
+          <div class="tip" id="3">
+            <strong>Signature:</strong> cap:int -&gt; eventCounter:EventCounter -&gt; monitorStatus:MonitorStatus -&gt; MonitorStatus<br />
+                                  </div>
+        </td>
+        <td class="xmldoc">
+                      <a href="https://github.com/jburman/limitbreak/tree/master/src/limitbreak/LimitBreak.fs#L96-96" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
     </tbody>
   </table>
-  <table class="table table-bordered module-list">
-    <thead>
-      <tr><td>Module</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td class="module-name">
-            <a href="limitbreak-limitbreak.html">limitbreak</a>
-          </td>
-          <td class="xmldoc">
-          
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-    </div>
 
         </div>
         <div class="span3">

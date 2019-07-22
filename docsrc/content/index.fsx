@@ -23,16 +23,24 @@ Documentation
 Example
 -------
 
-This example demonstrates using a function defined in this sample library.
-
+Create a "leaky bucket" style event limit.
+EventId 100 has a decay rate of 1/second and a maximum value of 1360. 
+Once the event counter surpasses 1000 it will be have a MonitorStatus of Limited and will not return to Ok until 
+the counter dacays back under 1000.
 *)
 #r "limitbreak.dll"
 open limitbreak
 
-printfn "hello = %i" <| Library.hello 0
+let eventId = 100
+let eventMonitor = new EventMonitor(eventId, [limitbreak.createDecayRate 1.0; limitbreak.createValueCap 1360; limitbreak.createThreshold 1000])
+
+let (status, count) = eventMonitor.GetStatus
+
+printfn "Status %A - Counter %i" status count
 
 (**
-Some more info
+The EventMonitor takes a list of "Event Processor" functions that are chained together. Each function has access to the current event counter value and is able to make updates to it.
+Each Event Processor also receives the current MonitorStatus and can return an updated MonitorStatus which will be supplied to the next function in the chain.
 
 Samples & documentation
 -----------------------
@@ -59,9 +67,9 @@ The library is available under Public Domain license, which allows modification 
 redistribution for both commercial and non-commercial purposes. For more information see the 
 [License file][license] in the GitHub repository. 
 
-  [content]: https://github.com/fsprojects/limitbreak/tree/master/docs/content
-  [gh]: https://github.com/fsprojects/limitbreak
-  [issues]: https://github.com/fsprojects/limitbreak/issues
-  [readme]: https://github.com/fsprojects/limitbreak/blob/master/README.md
-  [license]: https://github.com/fsprojects/limitbreak/blob/master/LICENSE.txt
+  [content]: https://github.com/jburman/limitbreak/tree/master/docs/content
+  [gh]: https://github.com/jburman/limitbreak
+  [issues]: https://github.com/jburman/limitbreak/issues
+  [readme]: https://github.com/jburman/limitbreak/blob/master/README.md
+  [license]: https://github.com/jburman/limitbreak/blob/master/LICENSE.txt
 *)
