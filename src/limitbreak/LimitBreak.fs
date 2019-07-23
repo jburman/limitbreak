@@ -17,9 +17,12 @@ type IEventCounter =
 end
 
 /// Encapsulates a thread safe counter associated with an eventId.
-type EventCounter(eventId: int) =
-    let observed = ref 0;
+type EventCounter(eventId: int, initialValue: int) =
+
+    let observed = ref initialValue;
     let limit = System.Int32.MaxValue - 10_000;
+
+    new(eventId: int) = EventCounter(eventId, 0)
 
     interface IEventCounter with
         member this.EventId() = eventId

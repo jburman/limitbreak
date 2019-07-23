@@ -46,7 +46,15 @@ module Tests =
                 let (status, count) = eventMon.GetStatus()
                 Expect.equal count 0 "Expected count of 0"
                 Expect.equal status MonitorStatus.Ok "Expected Status Ok"
-                
+            
+            testCase "counter with initial value" <| fun () ->
+                let eventMon = new EventMonitor(EventCounter(200, 10), [])
+
+                Expect.equal 200 eventMon.EventId "Expected eventId to be 200"
+
+                let (status, count) = eventMon.GetStatus()
+                Expect.equal count 10 "Expected count of 0"
+                Expect.equal status MonitorStatus.Ok "Expected Status Ok"
 
             testCase "value cap" <| fun () ->
                 let eventMon = new EventMonitor(1, [limitbreak.createValueCap 100])
