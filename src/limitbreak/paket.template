@@ -7,17 +7,17 @@ owners
 authors 
     Jeremy Burman
 projectUrl
-    https://github.com/jburman/limitbreak/jburman/limitbreak
+    https://github.com/jburman/limitbreak
 iconUrl
-    https://raw.githubusercontent.com/jburman/limitbreak/jburman/limitbreak/master/docs/files/img/logo.png
+    https://raw.githubusercontent.com/jburman/limitbreak/master/docs/files/img/logo.png
 licenseUrl
-    https://github.com/jburman/limitbreak/jburman/limitbreak/blob/master/LICENSE.txt
+    https://github.com/jburman/limitbreak/blob/master/LICENSE.txt
 requireLicenseAcceptance
     false
 language
     F#
 copyright
-    Copyright 2017
+    Copyright 2019
 tags
     event rate ratelimit
 summary
