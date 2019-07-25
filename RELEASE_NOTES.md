@@ -1,3 +1,6 @@
+#### 0.0.4 - Wednesday, July 24, 2019
+* Updated additional constructor to use IEnumerable
+
 #### 0.0.3 - Wednesday, July 24, 2019
 * Changes to make usage from C# more friendly. Added EventProcessor delegate and switched F# list usage out for IEnumerable.
 

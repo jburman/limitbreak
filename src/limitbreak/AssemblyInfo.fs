@@ -5,8 +5,8 @@ open System.Reflection
 [<assembly: AssemblyTitleAttribute("limitbreak")>]
 [<assembly: AssemblyProductAttribute("limitbreak")>]
 [<assembly: AssemblyDescriptionAttribute("Functions for tracking event frequency and applying rate limits.")>]
-[<assembly: AssemblyVersionAttribute("0.0.3")>]
-[<assembly: AssemblyFileVersionAttribute("0.0.3")>]
+[<assembly: AssemblyVersionAttribute("0.0.4")>]
+[<assembly: AssemblyFileVersionAttribute("0.0.4")>]
 [<assembly: AssemblyConfigurationAttribute("Release")>]
 do ()
 
@@ -14,6 +14,6 @@ module internal AssemblyVersionInformation =
     let [<Literal>] AssemblyTitle = "limitbreak"
     let [<Literal>] AssemblyProduct = "limitbreak"
     let [<Literal>] AssemblyDescription = "Functions for tracking event frequency and applying rate limits."
-    let [<Literal>] AssemblyVersion = "0.0.3"
-    let [<Literal>] AssemblyFileVersion = "0.0.3"
+    let [<Literal>] AssemblyVersion = "0.0.4"
+    let [<Literal>] AssemblyFileVersion = "0.0.4"
     let [<Literal>] AssemblyConfiguration = "Release"

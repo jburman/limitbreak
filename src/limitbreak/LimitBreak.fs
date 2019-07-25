@@ -54,11 +54,10 @@ type EventCounter(eventId: int, initialValue: int) =
 /// event should be "limited" or not.
 type EventMonitor (counter: IEventCounter, eventProcessors: seq<EventProcessor>) =
     
-    //new(eventId: int, eventProcessors: (IEventCounter -> MonitorStatus -> MonitorStatus) list) = 
-    new(eventId: int, eventProcessors: EventProcessor list) = 
+    new(eventId: int, eventProcessors: seq<EventProcessor>) = 
         EventMonitor(new EventCounter(eventId) :> IEventCounter, eventProcessors)
     
-    //member private this.processors = eventProcessors
+    // convert delegates to function values
     member private this.processors = 
         eventProcessors |> Seq.map (fun f -> f.Invoke)
 
