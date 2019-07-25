@@ -16,6 +16,8 @@ type IEventCounter =
     abstract member Observed:unit -> int
 end
 
+type EventProcessor = delegate of IEventCounter * MonitorStatus -> MonitorStatus
+
 /// Encapsulates a thread safe counter associated with an eventId.
 type EventCounter(eventId: int, initialValue: int) =
 
@@ -50,19 +52,22 @@ type EventCounter(eventId: int, initialValue: int) =
 /// Encapsulates an EventCounter and a set of "event processor" functions that operate on the counter 
 /// in order. Each process has the opportunity to read the counter and modify it and dtermine if the 
 /// event should be "limited" or not.
-type EventMonitor (counter: IEventCounter, eventProcessors: (IEventCounter -> MonitorStatus -> MonitorStatus) list) =
+type EventMonitor (counter: IEventCounter, eventProcessors: seq<EventProcessor>) =
     
-    new(eventId: int, eventProcessors: (IEventCounter -> MonitorStatus -> MonitorStatus) list) = 
+    //new(eventId: int, eventProcessors: (IEventCounter -> MonitorStatus -> MonitorStatus) list) = 
+    new(eventId: int, eventProcessors: EventProcessor list) = 
         EventMonitor(new EventCounter(eventId) :> IEventCounter, eventProcessors)
     
-    member private this.processors = eventProcessors
+    //member private this.processors = eventProcessors
+    member private this.processors = 
+        eventProcessors |> Seq.map (fun f -> f.Invoke)
 
     member this.EventId = 
         counter.EventId()
 
     member this.GetStatus() =
         let status = 
-            List.fold (fun (status: MonitorStatus) proc -> proc counter status) MonitorStatus.Ok this.processors
+            this.processors |> Seq.fold (fun (status: MonitorStatus) proc -> proc(counter, status)) MonitorStatus.Ok
         let observed = counter.Observed()
         status, observed
 
@@ -76,11 +81,12 @@ module limitbreak =
   
     /// Returns a MonitorStatus of limited when counter equals or exceeds a given value.
     let createThreshold limit =
-        fun (eventCounter: IEventCounter) (monitorStatus: MonitorStatus) ->
+        let proc = fun (eventCounter: IEventCounter) (monitorStatus: MonitorStatus) ->
             if eventCounter.Observed() >= limit then
                 MonitorStatus.Limited
             else
                 monitorStatus
+        new EventProcessor(proc)
 
     // Decrements the event counter at a given rate (based on the last time the value was decremented)
     // Does not change the monitor's status.
@@ -88,7 +94,7 @@ module limitbreak =
         let decayPerMillis = decayPerSecond / 1000.0
         let syncLock = Object
         let mutable lastRun = DateTime.Now
-        fun (eventCounter: IEventCounter) (monitorStatus: MonitorStatus) ->
+        let proc = fun (eventCounter: IEventCounter) (monitorStatus: MonitorStatus) ->
             try
                 Monitor.Enter syncLock
 
@@ -106,11 +112,13 @@ module limitbreak =
           
             // this function does not change the monitor status. Only applies a decrement
             monitorStatus
+        new EventProcessor(proc)
     
     // Applies a value cap (maximum value) on the event counter.
     // Does not change monitor status
     let createValueCap cap =
-        fun (eventCounter: IEventCounter) (monitorStatus: MonitorStatus) ->
+        let proc = fun (eventCounter: IEventCounter) (monitorStatus: MonitorStatus) ->
             if eventCounter.Observed() > cap then
                 eventCounter.Reset cap
             monitorStatus
+        new EventProcessor(proc)

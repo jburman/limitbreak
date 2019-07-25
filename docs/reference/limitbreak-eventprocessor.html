@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>EventCounter - limitbreak</title>
+    <title>EventProcessor - limitbreak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content="Jeremy Burman"/>
@@ -35,57 +35,36 @@
 
 
 
-<h1>EventCounter</h1>
+<h1>EventProcessor</h1>
 <p>
 
     <span>Namespace: limitbreak</span><br />
     </p>
 <div class="xmldoc">
-<p>Encapsulates a thread safe counter associated with an eventId.</p>
-
 </div>
-  <h3>Constructors</h3>
+  <h3>Instance members</h3>
   <table class="table table-bordered member-list">
     <thead>
-      <tr><td>Constructor</td><td>Description</td></tr>
+      <tr><td>Instance member</td><td>Description</td></tr>
     </thead>
     <tbody>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)">
-            new(eventId)
+          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
+            x.Invoke(arg1, arg2)
           </code>
-          <div class="tip" id="4">
-            <strong>Signature:</strong> eventId:int -&gt; EventCounter<br />
+          <div class="tip" id="12">
+            <strong>Signature:</strong> (IEventCounter * MonitorStatus) -&gt; MonitorStatus<br />
+              <strong>Modifiers:</strong> abstract<br />
                                   </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/jburman/limitbreak/tree/master/src/limitbreak/LimitBreak.fs#L27-27" class="github-link">
+                      <a href="https://github.com/jburman/limitbreak/tree/master/src/limitbreak/LimitBreak.fs#L19-19" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
           
-              <p>CompiledName: <code>.ctor</code></p>
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)">
-            new(eventId, initialValue)
-          </code>
-          <div class="tip" id="5">
-            <strong>Signature:</strong> (eventId:int * initialValue:int) -&gt; EventCounter<br />
-                                  </div>
-        </td>
-        <td class="xmldoc">
-                      <a href="https://github.com/jburman/limitbreak/tree/master/src/limitbreak/LimitBreak.fs#L22-22" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          
-              <p>CompiledName: <code>.ctor</code></p>
         </td>
       </tr>
     </tbody>
