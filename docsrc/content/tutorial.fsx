@@ -21,7 +21,10 @@ let eventMonitor = new EventMonitor(eventId,
         limitbreak.createThreshold 1000
     ])
 
-let (status, count) = eventMonitor.GetStatus
+eventMonitor.Increment()
+eventMonitor.Increment()
+
+let (status, count) = eventMonitor.GetStatus()
 
 printfn "Status %A - Counter %i" status count
 (**
