@@ -1,3 +1,6 @@
+#### 0.0.5 - Wednesday, August 1, 2019
+* Change MonitorStatus to an enum type
+
 #### 0.0.4 - Wednesday, July 24, 2019
 * Updated additional constructor to use IEnumerable
 

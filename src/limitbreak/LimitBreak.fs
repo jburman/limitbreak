@@ -4,8 +4,8 @@ open System
 open System.Threading
 
 type MonitorStatus =
-| Ok
-| Limited
+    | Ok = 0
+    | Limited = 1
 
 type IEventCounter =
     interface

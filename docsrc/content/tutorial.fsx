@@ -14,7 +14,12 @@ TODO
 open limitbreak
 
 let eventId = 100
-let eventMonitor = new EventMonitor(eventId, [limitbreak.createDecayRate 1.0; limitbreak.createValueCap 1360; limitbreak.createThreshold 1000])
+let eventMonitor = new EventMonitor(eventId, 
+    [
+        limitbreak.createDecayRate 1.0; 
+        limitbreak.createValueCap 1360; 
+        limitbreak.createThreshold 1000
+    ])
 
 let (status, count) = eventMonitor.GetStatus
 
